@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <style>
+      img {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="images/1.jpg" id="myimg" />
+    <input type="button" value=" start" onclick="startShow()" />
+    <input type="button" value="next" onclick="nextImage()" />
+    <input type="button" value=" stop" onclick="stopShow()" />
+    <input type="button" value=" prev" onclick="prevImage()" />
+
+    <script>
+      var imgArr = [
+        "img/1.jpg",
+        "img/2.jpg",
+        "img/3.png",
+        "img/4.jpg",
+        "img/5.jpg",
+      ];
+      function startShow() {
+        // every 1sec ==> call next();
+        t = setInterval("nextImage()", 1000);
+      }
+      var i = 0;
+      function nextImage() {
+        //
+        i++; // 1
+        // condition
+        if (i > imgArr.length - 1) {
+          i = 0;
+        }
+        myimg.src = imgArr[i];
+      }
+
+      function stopShow() {
+        // clear interval from statr
+        clearInterval(t);
+      }
+      function prevImage() {
+        i--;
+        if (i < 0) {
+          i = imgArr.length - 1;
+        }
+
+        myimg.src = imgArr[i];
+      }
+    </script>
+  </body>
+</html>
